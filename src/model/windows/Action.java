@@ -1,7 +1,18 @@
-package model.linux;
+/**
+ * 
+ */
+package model.windows;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import model.interfaces.SysAction;
 
@@ -10,12 +21,12 @@ import model.interfaces.SysAction;
  *
  */
 public class Action extends SysAction {
-	
-	// get linux os name
+	// get windows os name
 	public String getSysname() {
 		String sysname = System.getProperty("os.name");
-		if (!sysname.equalsIgnoreCase("linux")) {
-			System.out.println("you must use linux system!");
+		if (!(sysname.equalsIgnoreCase("windows XP") || sysname.equalsIgnoreCase("windows 7"))
+				|| sysname.equalsIgnoreCase("windows 8") || sysname.equalsIgnoreCase("windows 10")) {
+			System.out.println("you must use windows system!");
 		}
 		return sysname;
 	}
@@ -31,7 +42,7 @@ public class Action extends SysAction {
 		return usescript;
 	}
 
-	// run linux native script
+	// run windows native script
 	public void runNativeScript(String scriptname, boolean canuse) {
 		List<String> ls = getScriptList();
 		canuse = true;
@@ -42,7 +53,7 @@ public class Action extends SysAction {
 				scriptname = (String) it.next();
 
 				try {
-					String[] cmds = { "/bin/sh", "-c", scriptname };
+					String[] cmds = { "c://ps ", "-c", scriptname };
 
 					Process pro = Runtime.getRuntime().exec(cmds);
 					pro.waitFor();
@@ -57,8 +68,8 @@ public class Action extends SysAction {
 				} catch (Exception e) {
 					e.getMessage();
 				}
-
 			}
+
 		} else {
 
 		}
@@ -111,5 +122,4 @@ public class Action extends SysAction {
 			}
 		}
 	}
-
 }
