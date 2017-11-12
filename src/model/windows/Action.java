@@ -66,7 +66,7 @@ public class Action extends SysAction {
 					Process pro = Runtime.getRuntime().exec(cmds);
 					pro.waitFor();
 					InputStream in = pro.getInputStream();
-					BufferedReader read = new BufferedReader(new InputStreamReader(in));
+					BufferedReader read = new BufferedReader(new InputStreamReader(in,"GBK"));//windows local encode
 
 					String line = null;
 					List<String> ls2 =new ArrayList<String>();
@@ -93,7 +93,7 @@ public class Action extends SysAction {
 		FileOutputStream outSTr = null;
 		BufferedOutputStream Buff = null;
 		FileWriter fw = null;
-        int methods =1;
+        int methods =3;
         
 		try {
 			
@@ -104,7 +104,7 @@ public class Action extends SysAction {
 			long begin = System.currentTimeMillis();
 			Iterator i=strlist.iterator();
 			while(i.hasNext()){
-				out.write(((String)i.next()).getBytes());
+				out.write(((String)i.next()+"\r\n").getBytes());
 			}
 			out.close();
 			long end = System.currentTimeMillis();
@@ -118,7 +118,7 @@ public class Action extends SysAction {
 			long begin0 = System.currentTimeMillis();
 			Iterator i2=strlist.iterator();
 			while(i2.hasNext()){
-				Buff.write(((String)i2.next()).getBytes());
+				Buff.write(((String)i2.next()+"\r\n").getBytes());
 			}
 			Buff.flush();
 			Buff.close();
@@ -132,7 +132,7 @@ public class Action extends SysAction {
 			long begin3 = System.currentTimeMillis();
 			Iterator i3= strlist.iterator();
 			while(i3.hasNext()){
-				fw.write((String)i3.next());
+				fw.write((String)i3.next()+"\r\n");
 			}
 			fw.close();
 			long end3 = System.currentTimeMillis();
