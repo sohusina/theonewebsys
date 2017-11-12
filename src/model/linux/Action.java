@@ -49,11 +49,13 @@ public class Action extends SysAction {
 					InputStream in = pro.getInputStream();
 					BufferedReader read = new BufferedReader(new InputStreamReader(in));
 
+					List<String> ls2=new ArrayList<String>();
 					String line = null;
 					while ((line = read.readLine()) != null) {
 						// System.out.println(line);
-						writeToFile(line);
+						ls2.add(line);
 					}
+					writeToFile(ls2,scriptname);
 				} catch (Exception e) {
 					e.getMessage();
 				}
@@ -64,48 +66,68 @@ public class Action extends SysAction {
 		}
 	}
 
-	public void writeToFile(String str) {
+	 // use 3 ways to write to file
+	public void writeToFile(List<String> strlist,String scriptname) {
 		FileOutputStream out = null;
 		FileOutputStream outSTr = null;
 		BufferedOutputStream Buff = null;
 		FileWriter fw = null;
-		int count = 1000;// write file line count
-
+        int methods =1;
+        
 		try {
-			out = new FileOutputStream(new File("./list.txt"));
+			
+			switch(methods){
+			case 1:
+			out = new FileOutputStream(new File("./list"+scriptname+".txt"));
+			//the 1 way
 			long begin = System.currentTimeMillis();
-			for (int i = 0; i < count; i++) {
-				out.write("²âÊÔjava ÎÄ¼þ²Ù×÷\r\n".getBytes());
+			Iterator i=strlist.iterator();
+			while(i.hasNext()){
+				out.write(((String)i.next()).getBytes());
 			}
 			out.close();
 			long end = System.currentTimeMillis();
-			System.out.println("FileOutputStreamÖ´ÐÐºÄÊ±:" + (end - begin) + "ºÀÃë");
-			outSTr = new FileOutputStream(new File("C:/add0.txt"));
+			System.out.println("the script "+scriptname+" FileOutputStream spend time:" + (end - begin) + "ºÀÃë");
+			break;
+			
+			//the 2 way
+			case 2:
+			outSTr = new FileOutputStream(new File("./list"+scriptname+".txt"));
 			Buff = new BufferedOutputStream(outSTr);
 			long begin0 = System.currentTimeMillis();
-			for (int i = 0; i < count; i++) {
-				Buff.write("²âÊÔjava ÎÄ¼þ²Ù×÷\r\n".getBytes());
+			Iterator i2=strlist.iterator();
+			while(i2.hasNext()){
+				Buff.write(((String)i2.next()).getBytes());
 			}
 			Buff.flush();
 			Buff.close();
 			long end0 = System.currentTimeMillis();
-			System.out.println("BufferedOutputStreamÖ´ÐÐºÄÊ±:" + (end0 - begin0) + " ºÀÃë");
-			fw = new FileWriter("C:/add2.txt");
+			System.out.println("the script "+scriptname+" BufferedOutputStream spend time:" + (end0 - begin0) + " ºÀÃë");
+			break;
+			
+			//the 3 way
+			case 3:
+			fw = new FileWriter("./list"+scriptname+".txt");
 			long begin3 = System.currentTimeMillis();
-			for (int i = 0; i < count; i++) {
-				fw.write("²âÊÔjava ÎÄ¼þ²Ù×÷\r\n");
+			Iterator i3= strlist.iterator();
+			while(i3.hasNext()){
+				fw.write((String)i3.next());
 			}
 			fw.close();
 			long end3 = System.currentTimeMillis();
-			System.out.println("FileWriterÖ´ÐÐºÄÊ±:" + (end3 - begin3) + " ºÀÃë");
+			System.out.println("the script "+scriptname+" FileWriter spend time:" + (end3 - begin3) + " ºÀÃë");
+			break;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				fw.close();
-				Buff.close();
-				outSTr.close();
-				out.close();
+				if(fw!=null){
+				fw.close();}else if(Buff!=null){
+				Buff.close();}else if(outSTr!=null){
+				outSTr.close();}else if(out!=null){
+				out.close();}
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

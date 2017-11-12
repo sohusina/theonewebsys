@@ -17,6 +17,6 @@ public abstract class SysAction {
 	
 	public abstract void runNativeScript(String scriptname,boolean canuse);
 	
-	public abstract void writeToFile(String str);
+	public abstract void writeToFile(List<String> strlist,String scriptname);
 
 }
