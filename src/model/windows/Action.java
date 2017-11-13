@@ -15,6 +15,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import model.interfaces.SysAction;
+import model.script.ScriptDetail;
+import model.script.detail.*;
 
 /**
  * @author Administrator
@@ -32,7 +34,7 @@ public class Action extends SysAction {
 	}
 
 	// use script which created by us from os native
-	public List<String> getScriptList() {
+	public List<String> getScriptList2() {
 		//test start
 		String str1="1.bat";
 		String str2="2.bat";
@@ -42,6 +44,29 @@ public class Action extends SysAction {
 		ls.add(str1);
 		ls.add(str2);
 		return ls;
+	}
+	
+	public List<String> getScriptList() {
+		//test start
+		//String str1="1.bat";
+		//String str2="2.bat";
+		//test end
+		List<String> ls =new ArrayList<String>();
+		model.script.ScriptType st = new model.script.ScriptType();
+		List<ScriptDetail> lsd = st.getScriptList(getSysname());
+		Iterator i = lsd.iterator();
+		while(i.hasNext()){
+			//test perl
+			ScriptDetail sd = (ScriptDetail)i.next();
+		  if(sd instanceof Bat){
+			  System.out.println(sd+"is Bat!");
+      		 ls= ((Bat)sd).getBatScript();
+      		 System.out.println("Bat is ok!");
+		     return ls;
+		  }
+		}
+		return ls;
+		
 	}
 
 	public boolean canuseScript(boolean usescript) {
