@@ -28,7 +28,7 @@ public class ScriptType {
 	public List<ScriptDetail> getScriptList(String osname){
 		//List<ScriptDetail> ls = new ArrayList<ScriptDetail>();
 	//equals method shall replace regex
-		if((model.sys.common.SysUtil.getSysName(osname)).equalsIgnoreCase("windows 7")){
+		if(osname.equalsIgnoreCase("windows 7")){
 			winscript=getWinScriptType();
 			listscript = winscript.getWinScript();
 		
