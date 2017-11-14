@@ -1,0 +1,15 @@
+
+D:\Users\Administrator\workspace\git\theonewebsys\repositoryfortest>dir
+ 驱动器 D 中的卷没有标签。
+ 卷的序列号是 000A-A446
+
+ D:\Users\Administrator\workspace\git\theonewebsys\repositoryfortest 的目录
+
+2017/11/14  15:39    <DIR>          .
+2017/11/14  15:39    <DIR>          ..
+2017/11/14  14:50                 3 1.bat
+2017/11/14  15:39               468 1.bat.txt
+2017/11/14  15:18                13 2.bat
+2017/11/14  15:39               702 2.bat.txt
+               4 个文件          1,186 字节
+               2 个目录 52,026,875,904 可用字节

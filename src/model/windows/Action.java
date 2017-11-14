@@ -34,18 +34,6 @@ public class Action extends SysAction {
 	}
 
 	// use script which created by us from os native
-	public List<String> getScriptList2() {
-		//test start
-		String str1="1.bat";
-		String str2="2.bat";
-		//test end
-		
-		List<String> ls = new ArrayList<>();
-		ls.add(str1);
-		ls.add(str2);
-		return ls;
-	}
-	
 	public List<String> getScriptList() {
 		//test start
 		//String str1="1.bat";
@@ -87,8 +75,11 @@ public class Action extends SysAction {
 
 				try {
 					//String[] cmds = { "c://", scriptname };
-                    String cmds="c://"+scriptname;
-					Process pro = Runtime.getRuntime().exec(cmds);
+                    //String cmds="c://"+scriptname;
+					String cmds=scriptname;
+					System.out.println("cmds is "+cmds);
+					String[] strs={""};
+					Process pro = Runtime.getRuntime().exec(cmds,strs,new File(System.getProperty("user.dir")+"\\repositoryfortest"));
 					pro.waitFor();
 					InputStream in = pro.getInputStream();
 					BufferedReader read = new BufferedReader(new InputStreamReader(in,"GBK"));//windows local encode
@@ -124,7 +115,7 @@ public class Action extends SysAction {
 			
 			switch(methods){
 			case 1:
-			out = new FileOutputStream(new File("c:/list"+scriptname+".txt"));
+			out = new FileOutputStream(new File(scriptname+".txt"));
 			//the 1 way
 			long begin = System.currentTimeMillis();
 			Iterator i=strlist.iterator();
@@ -138,7 +129,7 @@ public class Action extends SysAction {
 			
 			//the 2 way
 			case 2:
-			outSTr = new FileOutputStream(new File("C:/list"+scriptname+".txt"));
+			outSTr = new FileOutputStream(new File(scriptname+".txt"));
 			Buff = new BufferedOutputStream(outSTr);
 			long begin0 = System.currentTimeMillis();
 			Iterator i2=strlist.iterator();
@@ -153,7 +144,7 @@ public class Action extends SysAction {
 			
 			//the 3 way
 			case 3:
-			fw = new FileWriter("C:/list"+scriptname+".txt");
+			fw = new FileWriter(scriptname+".txt");
 			long begin3 = System.currentTimeMillis();
 			Iterator i3= strlist.iterator();
 			while(i3.hasNext()){

@@ -7,8 +7,8 @@ import model.script.ScriptDetail;
 
 public class Bat extends ScriptDetail{
 
-	private String str1="1.bat";
-	private String str2="2.bat";
+	private String str1=System.getProperty("user.dir")+"\\repositoryfortest\\"+"1.bat";
+	private String str2=System.getProperty("user.dir")+"\\repositoryfortest\\"+"2.bat";
 	
 	public List<String> getBatScript(){
 		List<String> ls = new ArrayList<String>();
