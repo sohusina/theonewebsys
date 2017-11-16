@@ -1,18 +1,18 @@
 
-D:\Users\Administrator\workspace\git\theonewebsys\repositoryfortest>cd ../   && dir
- 驱动器 D 中的卷没有标签。
- 卷的序列号是 000A-A446
+D:\Users\Administrator.SKY-20160914QOF\git\theonewebsys\repositoryfortest>cd ../   && dir
+ 驱动器 D 中的卷是 软件
+ 卷的序列号是 0000-4823
 
- D:\Users\Administrator\workspace\git\theonewebsys 的目录
+ D:\Users\Administrator.SKY-20160914QOF\git\theonewebsys 的目录
 
-2017/11/14  14:48    <DIR>          .
-2017/11/14  14:48    <DIR>          ..
-2017/11/14  14:48               288 .classpath
-2017/11/09  15:36               278 .gitignore
-2017/11/09  15:36               383 .project
-2017/11/14  15:39    <DIR>          bin
-2017/11/12  19:42               747 README.md
-2017/11/14  15:39    <DIR>          repositoryfortest
-2017/11/09  23:26    <DIR>          src
+2017/11/15  12:24    <DIR>          .
+2017/11/15  12:24    <DIR>          ..
+2017/11/15  12:24               288 .classpath
+2017/11/10  12:09               278 .gitignore
+2017/11/10  12:09               383 .project
+2017/11/15  12:36    <DIR>          bin
+2017/11/12  13:41               747 README.md
+2017/11/15  12:24    <DIR>          repositoryfortest
+2017/11/10  12:09    <DIR>          src
                4 个文件          1,696 字节
-               5 个目录 52,026,875,904 可用字节
+               5 个目录 181,218,566,144 可用字节

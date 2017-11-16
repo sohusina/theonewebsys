@@ -24,7 +24,9 @@ public class TestCase {
 			
 			winaction.runNativeScript("", true);
 			
-		}else if(tc.str2.equals("islinux")){
+		}
+		
+		if(tc.str2.equals("islinux")){
 			model.linux.Action linuxaction= new model.linux.Action();
 			System.out.println("the os name is "+linuxaction.getSysname());
 		}
